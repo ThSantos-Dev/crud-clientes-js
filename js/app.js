@@ -80,6 +80,7 @@ const saveClient = async () => {
 
   // 3º Fechar modal
   closeModal();
+  document.getElementById('modal').removeAttribute('data-id-client')
 
   // 4º Atualizar tabela
   updateTable();
