@@ -18,7 +18,9 @@ const createClient = async (client) => {
     }
 
     const response = await fetch(`${url}clientes`, options)
-    console.log(response.ok)
+    
+    if(response.ok)
+        alert('Cliente cadastrado com sucesso!')
 }
 
 /**
@@ -30,8 +32,26 @@ const readClients = async () => {
     const response = await fetch(`${url}clientes`)
     const data = await response.json()
 
-    console.log(data)
     return data
+}
+
+const readClient = async (idClient) => {
+    const response = await fetch(`${url}clientes/${idClient}`)
+    const data = response.json()
+
+    return data
+}
+
+const updateClient = async (client, idClient) => {
+    const options = {
+        method: 'PUT',
+        body: JSON.stringify(client),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }
+    const response = await fetch(`${url}clientes/${idClient}`, options)
+    console.log(response.ok)
 }
 
 /**
@@ -48,4 +68,4 @@ const deleteClient = async (idClient) => {
     console.log(response.ok)
 }
 
-export { readClients, createClient, deleteClient }
+export { readClients, createClient, deleteClient, readClient, updateClient }
