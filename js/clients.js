@@ -2,6 +2,7 @@
 
 // Url Base
 const url = 'https://testeleonid.herokuapp.com/'
+// const url = 'http://localhost/thales/backend-php/'
 
 /**
  * Função que encaminha os dados do usuário para a API
@@ -37,7 +38,9 @@ const readClients = async () => {
 
 const readClient = async (idClient) => {
     const response = await fetch(`${url}clientes/${idClient}`)
-    const data = response.json()
+    const data = await response.json()
+
+    console.log(data)
 
     return data
 }
@@ -51,7 +54,7 @@ const updateClient = async (client, idClient) => {
         }
     }
     const response = await fetch(`${url}clientes/${idClient}`, options)
-    console.log(response.ok)
+    console.log(response)
 }
 
 /**

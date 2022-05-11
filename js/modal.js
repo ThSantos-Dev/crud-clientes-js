@@ -1,5 +1,8 @@
 'use strict'
 
+// Imports
+import { imagePreview } from "./imagePreview.js";
+
 const openModal = () => document.getElementById('modal').classList.add('active')
 
 const closeModal = () => {
@@ -12,9 +15,15 @@ const closeModal = () => {
     document.getElementById("txtNome").value = ""
 }
 
+const loadImage = () => imagePreview('modalImageInput', 'modalImage')
+
+
+
 document.getElementById('modalClose').addEventListener('click', closeModal)
 
 document.getElementById('cancelar').addEventListener('click', closeModal)
+
+document.getElementById('modalImageInput').addEventListener('change', loadImage)
 
 // Export 
 export { openModal, closeModal }
